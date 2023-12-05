@@ -1,3 +1,4 @@
+
 # Find Cheap Phone and Stocks Price "Predictor"
 
 This project comprises two modules: **Stocks Price "Predictor"** and **Find Cheap Phone**, written in Java using Selenium WebDriver and TestNG.
@@ -69,5 +70,11 @@ This project is distributed under the `MIT License`.
 - Author: Serafim Petrov
 - Email: serafimspetrovs@gmail.com
 - GitHub: https://github.com/SerafimsPetrovs
+  ![avatar](https://avatars.githubusercontent.com/u/148495939?v=4)
+
+
+
+
+
 
 
