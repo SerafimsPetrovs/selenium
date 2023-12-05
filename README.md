@@ -70,6 +70,8 @@ This project is distributed under the `MIT License`.
 - Author: Serafim Petrov
 - Email: serafimspetrovs@gmail.com
 - GitHub: https://github.com/SerafimsPetrovs
+<br>
+<br>
   ![avatar](https://avatars.githubusercontent.com/u/148495939?v=4)
 
 
