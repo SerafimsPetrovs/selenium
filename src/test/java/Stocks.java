@@ -22,37 +22,53 @@ public class Stocks {
     private GetPrice getPrice = new GetPrice();
     private AcceptAll acceptAll = new AcceptAll();
     private String price;
-    private int answer;
-    public int threadTime=10000;
-    Random random=new Random();
+    private int candies = 0;
+    private int threadTime = 15000;
+
+    Random random = new Random();
 
     @Test
     public void StocksFinder() {
         driver.get(ConfigurationProperties.getConfiguration().getString("stock.url"));
         acceptAll.useButton();
+
         for (int i = 0; i < 5; i++) {
             try {
                 price = getPrice.getPriceField();
+                //int wfevd=random.nextInt(2);
 
                 boolean willBeHigher = random.nextBoolean();
                 String direction = willBeHigher ? "HIGHER" : "LOWER";
-                System.out.println("Considering the previous price, I believe that in the next " + (threadTime / 1000) + " seconds, the price will be " + direction);
-
-
 
                 System.out.println(price);
+                System.out.println("Based on the previous price, I believe that in the next " +
+                        (threadTime / 1000) + " seconds, the price will be " + direction);
+                System.out.println("======================================================");
+
+                Thread.sleep(threadTime);
+
+                String nextPrice = getPrice.getPriceField();
+                boolean nextPriceHigher = Double.parseDouble(nextPrice.replace(",", "")) > Double.parseDouble(price.replace(",", ""));
+
+                if ((willBeHigher && nextPriceHigher) || (!willBeHigher && !nextPriceHigher)) {
+                    candies++;
+                    System.out.println("Prediction was CORRECT! You earned a candy. Total candies: " + candies);
+                } else {
+                    candies--;
+                    System.out.println("Prediction was INCORRECT! You lost a candy. Total candies: " + candies);
+                }
+
                 writeToFile(price);
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            try {
-                Thread.sleep(threadTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
+
+        writeToFile("Total candies earned: " + candies);
+        writeToFile("==============================================");
+
+        System.out.println("Program has finished. Total candies earned: " + candies);
     }
 
     @AfterMethod
@@ -73,3 +89,4 @@ public class Stocks {
         }
     }
 }
+//тест гита
